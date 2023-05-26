@@ -17,7 +17,6 @@ class StoreFactory extends Factory
         $farmerIds = User::farmers()->pluck('id')->toArray();
 
         return [
-            'rate' => $this->faker->numberBetween(1, 5),
             'description' => $this->faker->text(),
             'farmer_id' => $this->faker->randomElement($farmerIds),
         ];
