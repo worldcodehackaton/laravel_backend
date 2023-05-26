@@ -18,7 +18,9 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->foreignId('store_id')->constrained();
             $table->foreignId('client_id')->constrained('users');
-            $table->foreignId('basket_id')->constrained();
+            $table->foreignId('product_id')->constrained();
+            $table->integer('count');
+            $table->double('weight');
             $table->enum('status', Order::$statuses);
             $table->dateTime('delivered_at');
             $table->timestamps();
