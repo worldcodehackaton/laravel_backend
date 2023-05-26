@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Delivery;
+use App\Models\Order;
 use Illuminate\Database\Seeder;
 
-class DeliverySeeder extends Seeder
+class OrderSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class DeliverySeeder extends Seeder
      */
     public function run()
     {
-        Delivery::factory(18)->create();
+        Order::factory(18)->create();
     }
 }

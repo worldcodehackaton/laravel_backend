@@ -3,13 +3,13 @@
 namespace App\Repositories;
 
 use App\Contracts\RepositoryContract;
-use App\Models\Delivery;
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Collection;
 
-class DeliveryRepository extends RepositoryContract
+class OrderRepository extends RepositoryContract
 {
     public function __construct(
-        private Delivery $model
+        private Order $model
     ) {
     }
 

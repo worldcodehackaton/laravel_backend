@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\Delivery;
+use App\Models\Order;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDeliveriesTable extends Migration
+class CreateOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,11 @@ class CreateDeliveriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('deliveries', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('store_id')->constrained();
             $table->foreignId('client_id')->constrained('users');
-            $table->enum('status', Delivery::$statuses);
+            $table->enum('status', Order::$statuses);
             $table->dateTime('delivered_at');
             $table->json('baskets');
             $table->timestamps();
@@ -32,6 +32,6 @@ class CreateDeliveriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deliveries');
+        Schema::dropIfExists('orders');
     }
 }

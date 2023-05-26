@@ -7,17 +7,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Delivery extends Model
+class Order extends Model
 {
     use HasFactory;
 
     const STATUS_PAYMENT_REQUIRED = 'PAYMEMT_REQUIRED';
-    const STATUS_IN_DELIVERY = 'IN_DELIVERY';
+    const STATUS_IN_ORDER = 'IN_ORDER';
     const STATUS_DELIVERED = 'DELIVERED';
 
     public static array $statuses = [
         self::STATUS_PAYMENT_REQUIRED,
-        self::STATUS_IN_DELIVERY,
+        self::STATUS_IN_ORDER,
         self::STATUS_DELIVERED,
     ];
 
