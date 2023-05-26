@@ -24,9 +24,9 @@ class OrderFactory extends Factory
         return [
             'store_id' => $this->faker->randomElement($storeIds),
             'client_id' => $this->faker->randomElement($clientIds),
+            'basket_id' => $this->faker->randomElement($basketIds),
             'status' => $this->faker->randomElement(Order::$statuses),
             'delivered_at' => $this->faker->dateTimeBetween('26.05.23', '18.06.23'),
-            'baskets' => $this->faker->randomElements($basketIds, 5),
         ];
     }
 }

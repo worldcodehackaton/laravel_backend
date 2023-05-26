@@ -23,7 +23,7 @@ class OrderResource extends JsonResource
         $storeRepository = app(StoreRepository::class);
 
         return [
-            'baskets' => new BasketCollection($basketRepository->getByIds($this->baskets)),
+            'basket' => new BasketResource($basketRepository->findOrFail($this->basket_id)),
             'store' => new StoreResource($storeRepository->findOrFail($this->store_id)),
             'status' => $this->status,
             'delivered_at' => $this->delivered_at,

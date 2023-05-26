@@ -23,8 +23,8 @@ class BasketRepository extends RepositoryContract
         return $this->model->all();
     }
 
-    public function getByIds(array $ids): Collection
+    public function findOrFail(int $id): Basket
     {
-        return $this->model->whereIn('id', $ids)->get();
+        return $this->model->findOrFail($id);
     }
 }

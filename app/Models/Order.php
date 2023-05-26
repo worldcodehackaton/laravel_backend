@@ -27,11 +27,7 @@ class Order extends Model
         'client_id',
         'status',
         'delivered_at',
-        'baskets',
-    ];
-
-    protected $casts = [
-        'baskets' => 'array',
+        'basket_id',
     ];
 
     public function store(): BelongsTo
