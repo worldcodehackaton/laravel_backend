@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +34,6 @@ Route::resource('delivery', DeliveryController::class)->only(['index', 'show']);
 Route::resource('store', StoreController::class)->only(['index', 'show']);
 Route::resource('product', ProductController::class)->only(['index', 'show']);
 Route::resource('category', CategoryController::class)->only(['index']);
+Route::resource('user', UserController::class);
 
 Route::get('store-rating', [StoreController::class, 'ratingView'])->name('store.sort');
