@@ -33,3 +33,5 @@ Route::resource('delivery', DeliveryController::class);
 Route::resource('store', StoreController::class);
 Route::resource('product', ProductController::class);
 Route::resource('category', CategoryController::class);
+
+Route::get('store-rating', [StoreController::class, 'ratingView'])->name('store.sort');
