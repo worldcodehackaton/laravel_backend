@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\DTO\UserDto;
+use App\DTO\ClientDto;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRegisterRequest;
 use App\Http\Resources\UserResource;
@@ -19,14 +19,14 @@ class RegisterController extends Controller
     public function register(UserRegisterRequest $request)
     {
         $user = null;
+        $token = null;
 
-        DB::transaction(function () use ($request, &$user) {
+        DB::transaction(function () use ($request, &$user, &$token) {
 
-            $user = $this->service->store(UserDto::fromRequest($request));
+            $user = $this->service->store(ClientDto::fromRequest($request));
+            $token = $user->createToken('login_token')->plainTextToken;
 
         });
-
-        $token = '';
 
         return response()->json([
             'user' => new UserResource($user),

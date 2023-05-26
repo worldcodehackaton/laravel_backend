@@ -6,13 +6,12 @@ use App\Caster\HashMakeCaster;
 use Spatie\DataTransferObject\DataTransferObject;
 use Spatie\DataTransferObject\Attributes\CastWith;
 
-class UserDto extends DataTransferObject
+class ClientDto extends DataTransferObject
 {
     public string $name;
     public string $email;
     #[CastWith(HashMakeCaster::class)]
     public string $password;
-    public string $role;
 
     public static function fromRequest($request)
     {

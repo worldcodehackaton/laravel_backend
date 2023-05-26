@@ -2,7 +2,8 @@
 
 namespace App\Services;
 
-use App\DTO\UserDto;
+use App\DTO\ClientDto;
+use App\Models\User;
 use App\Repositories\UserRepository;
 
 class UserService
@@ -12,12 +13,12 @@ class UserService
     ) {
     }
 
-    public function store(UserDto $dto): static
+    public function store(ClientDto $dto): User
     {
         $this->repository
             ->fill($dto->toArray())
             ->save();
 
-        return $this;
+        return $this->repository->getModel();
     }
 }
