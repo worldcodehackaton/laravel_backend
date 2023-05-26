@@ -25,7 +25,7 @@ class UserRepository extends RepositoryContract
 
     public function farmers(): Collection
     {
-        return $this->model->farmers();
+        return $this->model->farmers()->get();
     }
 
     public function fill(array $data): static

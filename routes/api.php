@@ -34,6 +34,6 @@ Route::resource('delivery', DeliveryController::class)->only(['index', 'show']);
 Route::resource('store', StoreController::class)->only(['index', 'show']);
 Route::resource('product', ProductController::class)->only(['index', 'show']);
 Route::resource('category', CategoryController::class)->only(['index']);
-Route::resource('user', UserController::class);
+Route::resource('user', UserController::class)->only(['index']);
 
 Route::get('store-rating', [StoreController::class, 'ratingView'])->name('store.sort');

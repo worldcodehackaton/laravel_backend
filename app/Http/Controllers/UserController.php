@@ -13,7 +13,7 @@ class UserController extends Controller
     ) {
     }
 
-    public function index(Request $request)
+    public function index(Request $request): UserCollection
     {
         return new UserCollection($this->repository->farmers());
     }
