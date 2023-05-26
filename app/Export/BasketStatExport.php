@@ -4,12 +4,12 @@ namespace App\Export;
 
 use App\Adapters\ExcelAdapter;
 use App\Contracts\ExportContract;
-use App\Repositories\OrderRepository;
+use App\Repositories\BasketRepository;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
-class OrderStatExport implements ExportContract
+class BasketStatExport implements ExportContract
 {
     public function __construct(
         protected ExcelAdapter $excel
@@ -19,7 +19,7 @@ class OrderStatExport implements ExportContract
     public function download(string $filename = null): StreamedResponse
     {
         $replace = ['date' => Carbon::now()];
-        $filename = $filename ?? __('filename.order.stat-export', $replace);
+        $filename = $filename ?? __('filename.basket.stat-export', $replace);
 
         $exportExcel = $this->excel
             ->setData($this->getData());
@@ -29,13 +29,13 @@ class OrderStatExport implements ExportContract
 
     public function getData(): array
     {
-        return $this->getOrders()->toArray();
+        return $this->getBaskets()->toArray();
     }
 
-    public function getOrders(): Collection
+    public function getBaskets(): Collection
     {
-        /** @var OrderRepository $repository */
-        $repository = app(OrderRepository::class);
+        /** @var BasketRepository $repository */
+        $repository = app(BasketRepository::class);
 
         return $repository->all();
     }

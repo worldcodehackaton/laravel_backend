@@ -2,8 +2,8 @@
 
 namespace App\Http\Resources;
 
-use App\Http\Resources\Collections\OrderCollection;
-use App\Repositories\OrderRepository;
+use App\Http\Resources\Collections\BasketCollection;
+use App\Repositories\BasketRepository;
 use App\Repositories\StoreRepository;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -17,13 +17,13 @@ class DeliveryResource extends JsonResource
      */
     public function toArray($request)
     {
-        /** @var OrderRepository $orderRepository */
-        $orderRepository = app(OrderRepository::class);
+        /** @var BasketRepository $basketRepository */
+        $basketRepository = app(BasketRepository::class);
         /** @var StoreRepository $storeRepository */
         $storeRepository = app(StoreRepository::class);
 
         return [
-            'orders' => new OrderCollection($orderRepository->getByIds($this->orders)),
+            'baskets' => new BasketCollection($basketRepository->getByIds($this->baskets)),
             'store' => new StoreResource($storeRepository->findOrFail($this->store_id)),
             'status' => $this->status,
             'delivered_at' => $this->delivered_at,

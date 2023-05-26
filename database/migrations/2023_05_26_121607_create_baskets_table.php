@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\Order;
+use App\Models\Basket;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrdersTable extends Migration
+class CreateBasketsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +14,14 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('baskets', function (Blueprint $table) {
             $table->id();
             $table->foreignId('store_id')->constrained();
             $table->foreignId('client_id')->constrained('users');
             $table->foreignId('product_id')->constrained();
             $table->integer('count');
             $table->double('weight');
-            $table->enum('type', Order::$types);
+            $table->enum('type', Basket::$types);
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('baskets');
     }
 }

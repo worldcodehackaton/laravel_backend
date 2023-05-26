@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'order' => [
-        'stat-export' => ':date_order-stat-export.xlsx',
+    'basket' => [
+        'stat-export' => ':date_basket-stat-export.xlsx',
     ],
 ];

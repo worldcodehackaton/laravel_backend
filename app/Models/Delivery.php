@@ -21,16 +21,17 @@ class Delivery extends Model
         self::STATUS_DELIVERED,
     ];
 
+    // FIXME: basket without array of ids
     protected $fillable = [
         'store_id',
         'client_id',
         'status',
         'delivered_at',
-        'orders',
+        'baskets',
     ];
 
     protected $casts = [
-        'orders' => 'array',
+        'baskets' => 'array',
     ];
 
     public function store(): BelongsTo

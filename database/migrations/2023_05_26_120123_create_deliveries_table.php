@@ -20,7 +20,7 @@ class CreateDeliveriesTable extends Migration
             $table->foreignId('client_id')->constrained('users');
             $table->enum('status', Delivery::$statuses);
             $table->dateTime('delivered_at');
-            $table->json('orders');
+            $table->json('baskets');
             $table->timestamps();
         });
     }

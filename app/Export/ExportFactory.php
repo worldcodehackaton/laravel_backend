@@ -10,7 +10,7 @@ class ExportFactory
     {
         switch ($export) {
             case 'report-test':
-                return app(OrderStatExport::class);
+                return app(BasketStatExport::class);
                 break;
         }
     }

@@ -6,7 +6,7 @@ use App\Repositories\ProductRepository;
 use App\Repositories\StoreRepository;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class OrderResource extends JsonResource
+class BasketResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

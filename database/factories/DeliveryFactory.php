@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Basket;
 use App\Models\Delivery;
-use App\Models\Order;
 use App\Models\Store;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -19,14 +19,14 @@ class DeliveryFactory extends Factory
     {
         $storeIds = Store::pluck('id')->toArray();
         $clientIds = User::clients()->pluck('id')->toArray();
-        $orderIds = Order::pluck('id')->toArray();
+        $basketIds = Basket::pluck('id')->toArray();
 
         return [
             'store_id' => $this->faker->randomElement($storeIds),
             'client_id' => $this->faker->randomElement($clientIds),
             'status' => $this->faker->randomElement(Delivery::$statuses),
             'delivered_at' => $this->faker->dateTimeBetween('26.05.23', '18.06.23'),
-            'orders' => $this->faker->randomElements($orderIds, 5),
+            'baskets' => $this->faker->randomElements($basketIds, 5),
         ];
     }
 }

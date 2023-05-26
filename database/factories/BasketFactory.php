@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Order;
-use App\Models\Product;
+use App\Models\Basket;
 use App\Models\Store;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class OrderFactory extends Factory
+class BasketFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -29,7 +28,7 @@ class OrderFactory extends Factory
             'product_id' => $this->faker->randomElement($productIds),
             'count' => $this->faker->numberBetween(1, 18),
             'weight' => $this->faker->randomFloat(2, 5, 12),
-            'type' => $this->faker->randomElement(Order::$types),
+            'type' => $this->faker->randomElement(Basket::$types),
         ];
     }
 }
