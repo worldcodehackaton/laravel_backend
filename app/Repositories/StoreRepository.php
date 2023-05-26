@@ -25,6 +25,6 @@ class StoreRepository extends RepositoryContract
 
     public function findOrFail(int $id): Store
     {
-        return $this->findOrFail($id);
+        return $this->model->findOrFail($id);
     }
 }

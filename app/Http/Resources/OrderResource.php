@@ -21,9 +21,12 @@ class OrderResource extends JsonResource
         /** @var StoreRepository $storeRepository */
         $storeRepository = app(StoreRepository::class);
 
+        $store = new StoreResource($storeRepository->findOrFail($this->store_id));
+        $product = new ProductResource($productRepository->findOrFail($this->product_id));
+
         return [
-            'store' => new StoreResource($storeRepository->findOrFail($this->store_id)),
-            'product' => new ProductResource($productRepository->findOrFail($this->product_id)),
+            'store' => $store,
+            'product' => $product,
             'count' => $this->count,
             'weight' => $this->weight,
             'type' => $this->type,
