@@ -12,9 +12,7 @@ class ProductController extends Controller
 {
     public function __construct(
         public ProductRepository $repository
-    )
-    {
-
+    ) {
     }
 
     public function index(Request $request): ProductCollection

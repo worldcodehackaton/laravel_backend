@@ -28,10 +28,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('order', OrderController::class);
-Route::resource('delivery', DeliveryController::class);
-Route::resource('store', StoreController::class);
-Route::resource('product', ProductController::class);
-Route::resource('category', CategoryController::class);
+Route::resource('order', OrderController::class)->only(['index', 'show']);
+Route::resource('delivery', DeliveryController::class)->only(['index', 'show']);
+Route::resource('store', StoreController::class)->only(['index', 'show']);
+Route::resource('product', ProductController::class)->only(['index', 'show']);
+Route::resource('category', CategoryController::class)->only(['index']);
 
 Route::get('store-rating', [StoreController::class, 'ratingView'])->name('store.sort');

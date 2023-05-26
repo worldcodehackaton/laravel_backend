@@ -6,7 +6,7 @@ use App\Contracts\RepositoryContract;
 use App\Models\Review;
 use Illuminate\Database\Eloquent\Collection;
 
-class ReviewRepositores extends RepositoryContract
+class ReviewRepository extends RepositoryContract
 {
     public function __construct(
         private Review $model,
