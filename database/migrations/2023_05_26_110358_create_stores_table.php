@@ -15,7 +15,6 @@ class CreateStoresTable extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->id();
-            $table->smallInteger('rate');
             $table->text('description');
             $table->foreignId('farmer_id')->constrained('users');
             $table->timestamps();

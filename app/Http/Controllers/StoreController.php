@@ -12,9 +12,7 @@ class StoreController extends Controller
 {
     public function __construct(
         public StoreRepository $repository
-    )
-    {
-
+    ) {
     }
 
     public function index(Request $request): StoreCollection
@@ -25,5 +23,13 @@ class StoreController extends Controller
     public function show(Request $request, Store $store): StoreResource
     {
         return new StoreResource($store);
+    }
+
+    public function ratingView(Request $request): StoreCollection
+    {
+        $stores = $this->repository->all()
+            ->sortBy('rate');
+
+        return new StoreCollection($stores);
     }
 }

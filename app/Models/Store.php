@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Repositories\StoreRepository;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -13,15 +14,22 @@ class Store extends Model
     use HasFactory;
 
     protected $fillable = [
-        'rate', 'farmer_id',
-        'description',
+        'farmer_id', 'description',
     ];
 
     protected $appends = ['rate'];
 
-    public function getRateAttribute(): int
+    public function getRateAttribute(): float
     {
-        return 1;
+        /** @var StoreRepository $repository */
+        $repository = app(StoreRepository::class, ['model' => $this]);
+
+        return $repository->getAvgRate();
+    }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
     }
 
     public function farmer(): BelongsTo

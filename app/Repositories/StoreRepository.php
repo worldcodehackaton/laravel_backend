@@ -27,4 +27,11 @@ class StoreRepository extends RepositoryContract
     {
         return $this->model->findOrFail($id);
     }
+
+    public function getAvgRate(): float
+    {
+        $rate = $this->model->reviews()->avg('rate');
+
+        return round($rate, 1);
+    }
 }
