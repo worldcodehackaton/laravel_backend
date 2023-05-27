@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use App\Http\Resources\Collections\BasketCollection;
 use App\Repositories\BasketRepository;
+use App\Repositories\ProductRepository;
 use App\Repositories\StoreRepository;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -17,14 +18,17 @@ class OrderResource extends JsonResource
      */
     public function toArray($request)
     {
-        /** @var BasketRepository $basketRepository */
-        $basketRepository = app(BasketRepository::class);
+        /** @var ProductRepository $productRepository */
+        $productRepository = app(ProductRepository::class);
         /** @var StoreRepository $storeRepository */
         $storeRepository = app(StoreRepository::class);
 
+        $store = new StoreResource($storeRepository->findOrFail($this->store_id));
+        $product = new ProductResource($productRepository->findOrFail($this->product_id));
+
         return [
-            'basket' => new BasketResource($basketRepository->findOrFail($this->basket_id)),
-            'store' => new StoreResource($storeRepository->findOrFail($this->store_id)),
+            'product' => $product,
+            'store' => $store,
             'status' => $this->status,
             'delivered_at' => $this->delivered_at,
         ];
