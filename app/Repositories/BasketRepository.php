@@ -27,4 +27,25 @@ class BasketRepository extends RepositoryContract
     {
         return $this->model->findOrFail($id);
     }
+
+    public function fill(array $data): static
+    {
+        $this->model->fill($data);
+
+        return $this;
+    }
+
+    public function save(): static
+    {
+        $this->model->save();
+
+        return $this;
+    }
+
+    public function delete(): static
+    {
+        $this->model->delete();
+
+        return $this;
+    }
 }

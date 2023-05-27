@@ -19,8 +19,8 @@ class CreateBasketsTable extends Migration
             $table->foreignId('store_id')->constrained();
             $table->foreignId('client_id')->constrained('users');
             $table->foreignId('product_id')->constrained();
-            $table->integer('count');
-            $table->double('weight');
+            $table->integer('count')->nullable();
+            $table->double('weight')->nullable();
             $table->enum('type', Basket::$types);
             $table->timestamps();
         });

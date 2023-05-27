@@ -17,14 +17,18 @@ class OrderFactory extends Factory
      */
     public function definition()
     {
+        $store = Store::inRandomOrder()->first();
+
         $storeIds = Store::pluck('id')->toArray();
         $clientIds = User::clients()->pluck('id')->toArray();
-        $basketIds = Basket::pluck('id')->toArray();
+        $productIds = $store->products()->pluck('id')->toArray();
 
         return [
             'store_id' => $this->faker->randomElement($storeIds),
             'client_id' => $this->faker->randomElement($clientIds),
-            'basket_id' => $this->faker->randomElement($basketIds),
+            'product_id' => $this->faker->randomElement($productIds),
+            'count' => $this->faker->numberBetween(1, 18),
+            'weight' => $this->faker->randomFloat(2, 5, 12),
             'status' => $this->faker->randomElement(Order::$statuses),
             'delivered_at' => $this->faker->dateTimeBetween('26.05.23', '18.06.23'),
         ];

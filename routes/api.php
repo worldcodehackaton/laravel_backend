@@ -29,11 +29,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('basket', BasketController::class)->only(['index', 'show']);
-Route::resource('order', OrderController::class)->only(['index', 'show']);
+Route::resource('basket', BasketController::class)->only(['index', 'show', 'store', 'delete']);
+Route::resource('order', OrderController::class)->only(['index', 'show', 'store']);
 Route::resource('store', StoreController::class)->only(['index', 'show']);
 Route::resource('product', ProductController::class)->only(['index', 'show']);
 Route::resource('category', CategoryController::class)->only(['index']);
 Route::resource('user', UserController::class)->only(['index']);
 
 Route::get('store-rating', [StoreController::class, 'ratingView'])->name('store.sort');
+Route::post('order-sendan/{order}', [OrderController::class, 'sendAn'])->name('order.send-an');
+Route::post('order-finish', [OrderController::class, 'finish'])->name('order.finish');
