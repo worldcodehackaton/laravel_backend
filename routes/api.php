@@ -6,6 +6,7 @@ use App\Http\Controllers\BasketBlueprintController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\HelpTipController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -39,6 +40,7 @@ Route::resource('category', CategoryController::class)->only(['index']);
 Route::resource('user', UserController::class)->only(['index']);
 Route::resource('review', ReviewController::class)->only(['index', 'store']);
 Route::resource('basket-blueprint', BasketBlueprintController::class)->only(['index', 'store']);
+Route::resource('help-tip', HelpTipController::class)->only(['index', 'store']);
 
 Route::get('store-rating', [StoreController::class, 'ratingView'])->name('store.sort');
 Route::post('order-sendan/{order}', [OrderController::class, 'sendAn'])->name('order.send-an');
