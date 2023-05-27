@@ -8,6 +8,7 @@ use App\Http\Controllers\BasketController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
 
@@ -35,6 +36,7 @@ Route::resource('store', StoreController::class)->only(['index', 'show']);
 Route::resource('product', ProductController::class)->only(['index', 'show', 'store']);
 Route::resource('category', CategoryController::class)->only(['index']);
 Route::resource('user', UserController::class)->only(['index']);
+Route::resource('review', ReviewController::class)->only(['index', 'store']);
 
 Route::get('store-rating', [StoreController::class, 'ratingView'])->name('store.sort');
 Route::post('order-sendan/{order}', [OrderController::class, 'sendAn'])->name('order.send-an');

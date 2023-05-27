@@ -20,6 +20,20 @@ class ReviewRepository extends RepositoryContract
 
     public function all(): Collection
     {
-        return $this->getQuery()->all();
+        return $this->model->all();
+    }
+
+    public function fill(array $data): static
+    {
+        $this->model->fill($data);
+
+        return $this;
+    }
+
+    public function save(): static
+    {
+        $this->model->save();
+
+        return $this;
     }
 }
