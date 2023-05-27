@@ -32,7 +32,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::resource('basket', BasketController::class)->only(['index', 'show', 'store', 'delete']);
 Route::resource('order', OrderController::class)->only(['index', 'show', 'store']);
 Route::resource('store', StoreController::class)->only(['index', 'show']);
-Route::resource('product', ProductController::class)->only(['index', 'show']);
+Route::resource('product', ProductController::class)->only(['index', 'show', 'store']);
 Route::resource('category', CategoryController::class)->only(['index']);
 Route::resource('user', UserController::class)->only(['index']);
 

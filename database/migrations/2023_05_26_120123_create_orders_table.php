@@ -16,9 +16,9 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('store_id');
+            $table->foreignId('store_id')/*->constrained()*/;
             $table->foreignId('client_id')->constrained('users');
-            $table->foreignId('product_id');
+            $table->foreignId('product_id')/*->constrained()*/;
             $table->integer('count')->nullable();
             $table->double('weight')->nullable();
             $table->enum('status', Order::$statuses);
