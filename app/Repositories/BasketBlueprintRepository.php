@@ -3,19 +3,14 @@
 namespace App\Repositories;
 
 use App\Contracts\RepositoryContract;
-use App\Models\User;
+use App\Models\BasketBlueprint;
 use Illuminate\Database\Eloquent\Collection;
 
-class UserRepository extends RepositoryContract
+class BasketBlueprintRepository extends RepositoryContract
 {
     public function __construct(
-        private User $model
+        private BasketBlueprint $model
     ) {
-    }
-
-    public function getModel(): User
-    {
-        return $this->model;
     }
 
     public function getQuery()
@@ -23,9 +18,9 @@ class UserRepository extends RepositoryContract
         return $this->model->query();
     }
 
-    public function farmers(): Collection
+    public function all(): Collection
     {
-        return $this->model->farmers()->get();
+        return $this->model->all();
     }
 
     public function fill(array $data): static
@@ -40,10 +35,5 @@ class UserRepository extends RepositoryContract
         $this->model->save();
 
         return $this;
-    }
-
-    public function findOrFail(int $id): User
-    {
-        return $this->model->findOrFail($id);
     }
 }
