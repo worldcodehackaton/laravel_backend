@@ -19,8 +19,8 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->double('price');
             $table->text('description')->nullable();
-            $table->foreignId('store_id')->constrained();
-            $table->foreignId('category_id')->constrained();
+            $table->foreignId('store_id');
+            $table->foreignId('category_id');
             $table->enum('calc_type', Product::$calcTypes);
             $table->timestamps();
         });
